@@ -1,6 +1,10 @@
 <div align="center">
 
-# 🎯 IntriVue
+#  IntriVue - Intelligent Swipe-Based Opportunity Discovery Platform
+
+INTRIVUE is a full-stack AI-driven job and internship discovery platform designed to simplify how users find relevant opportunities. Inspired by swipe-based interaction systems, the platform enables users to explore jobs dynamically while leveraging machine learning for personalized recommendations.
+
+The system integrates a React + Vite frontend, a Node.js + Express backend, and a Python FastAPI-based ML microservice. It uses TF-IDF and cosine similarity to analyze user profiles and job descriptions, ensuring accurate and meaningful matches.
 
 ### AI-Powered Job Matching Platform
 
@@ -21,6 +25,15 @@
 </div>
 
 ---
+
+
+INTRIVUE is a full-stack AI-driven job and internship discovery platform designed to simplify how users find relevant opportunities. Inspired by swipe-based interaction systems, the platform enables users to explore jobs dynamically while leveraging machine learning for personalized recommendations.
+
+The system integrates a React + Vite frontend, a Node.js + Express backend, and a Python FastAPI-based ML microservice. It uses TF-IDF and cosine similarity to analyze user profiles and job descriptions, ensuring accurate and meaningful matches.
+
+INTRIVUE is a full-stack AI-driven job and internship discovery platform designed to simplify how users find relevant opportunities. Inspired by swipe-based interaction systems, the platform enables users to explore jobs dynamically while leveraging machine learning for personalized recommendations.
+
+The system integrates a React + Vite frontend, a Node.js + Express backend, and a Python FastAPI-based ML microservice. It uses TF-IDF and cosine similarity to analyze user profiles and job descriptions, ensuring accurate and meaningful matches.
 
 ## ✨ Features
 
