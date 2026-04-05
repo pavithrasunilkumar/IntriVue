@@ -74,13 +74,17 @@ Register → Login → Dashboard
 ---
 
 ## 🏗️ Architecture
+
+```
 ┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
 │   Frontend      │────▶│   Backend        │────▶│   ML Service    │
 │  React + Vite   │     │  Node + Express  │     │  Python FastAPI │
 │  TypeScript     │◀────│  MongoDB Atlas   │     │  TF-IDF Cosine  │
 │  Tailwind CSS   │     │  JWT Auth        │◀────│  Similarity     │
 └─────────────────┘     └──────────────────┘     └─────────────────┘
-:5173                    :5000                     :8000
+   :5173                      :5000                     :8000
+```
+
 
 
 ---
