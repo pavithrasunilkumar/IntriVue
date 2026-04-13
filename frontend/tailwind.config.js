@@ -1,0 +1,61 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html','./src/**/*.{js,jsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['"Cal Sans"','Inter','sans-serif'],
+        body:    ['"Inter"','sans-serif'],
+        mono:    ['"JetBrains Mono"','monospace'],
+      },
+      colors: {
+        bg:       '#0d0d14',
+        surface:  '#13131f',
+        card:     '#1a1a2e',
+        border:   '#ffffff0f',
+        'border-bright': '#ffffff1a',
+        gold:     '#f5a623',
+        'gold-dim':'#f5a62366',
+        accent:   '#6366f1',
+        'accent-glow': '#6366f133',
+        success:  '#22c55e',
+        warn:     '#f59e0b',
+        danger:   '#ef4444',
+        muted:    '#6b7280',
+        sub:      '#9ca3af',
+        text:     '#f1f0ee',
+        'text-dim':'#c4c2be',
+      },
+      boxShadow: {
+        glass:  '0 4px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+        glow:   '0 0 40px rgba(99,102,241,0.15)',
+        'gold-glow': '0 0 30px rgba(245,166,35,0.2)',
+        card:   '0 2px 16px rgba(0,0,0,0.5)',
+      },
+      backgroundImage: {
+        'hero-mesh': 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.25) 0%, transparent 70%)',
+        'card-shine': 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)',
+        'gold-shine': 'linear-gradient(135deg, rgba(245,166,35,0.15) 0%, transparent 60%)',
+      },
+      animation: {
+        'fade-up':    'fadeUp 0.5s ease both',
+        'fade-in':    'fadeIn 0.4s ease both',
+        'scale-in':   'scaleIn 0.3s ease both',
+        'slide-right':'slideRight 0.4s ease both',
+        shimmer:      'shimmer 1.8s linear infinite',
+        'pulse-gold': 'pulseGold 2.5s ease-in-out infinite',
+        'border-flow':'borderFlow 3s linear infinite',
+      },
+      keyframes: {
+        fadeUp:      { from:{opacity:0,transform:'translateY(20px)'}, to:{opacity:1,transform:'translateY(0)'} },
+        fadeIn:      { from:{opacity:0}, to:{opacity:1} },
+        scaleIn:     { from:{opacity:0,transform:'scale(0.95)'}, to:{opacity:1,transform:'scale(1)'} },
+        slideRight:  { from:{opacity:0,transform:'translateX(-16px)'}, to:{opacity:1,transform:'translateX(0)'} },
+        shimmer:     { from:{backgroundPosition:'-200% 0'}, to:{backgroundPosition:'200% 0'} },
+        pulseGold:   { '0%,100%':{boxShadow:'0 0 0 0 rgba(245,166,35,0.3)'},'50%':{boxShadow:'0 0 0 10px rgba(245,166,35,0)'} },
+        borderFlow:  { '0%':{backgroundPosition:'0% 50%'},'100%':{backgroundPosition:'200% 50%'} },
+      },
+    },
+  },
+  plugins: [],
+}
