@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#000000;--surface:#060608;--card:#0c0c12;--violet:#7c3aed;--indigo:#6366f1;--cyan:#06b6d4;--text:#f0eeeb}
+
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#000000;color:#f0eeeb;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:#7c3aed;border-radius:4px}
+
+/* Glass */
+.glass{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.04)}
+.glass-bright{background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.11);backdrop-filter:blur(20px)}
+.glass-violet{background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.18);backdrop-filter:blur(20px)}
+
+/* Glow borders */
+.glow-violet{box-shadow:0 0 0 1px rgba(124,58,237,0.5),0 0 20px rgba(124,58,237,0.12)}
+
+/* Inputs */
+.input-dark{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);color:#f0eeeb;border-radius:12px;padding:13px 16px;width:100%;font-family:'Inter',sans-serif;font-size:14px;transition:border-color .2s,box-shadow .2s;outline:none}
+.input-dark::placeholder{color:rgba(255,255,255,0.18)}
+.input-dark:focus{border-color:rgba(124,58,237,0.6);box-shadow:0 0 0 3px rgba(124,58,237,0.1)}
+
+/* Buttons */
+.btn-violet{background:linear-gradient(135deg,#7c3aed,#6366f1);color:white;font-weight:600;font-size:14px;padding:13px 24px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 0 24px rgba(124,58,237,0.3);position:relative;overflow:hidden}
+.btn-violet:hover{transform:translateY(-1px);box-shadow:0 0 40px rgba(124,58,237,0.5)}
+.btn-violet:active{transform:translateY(0)}
+.btn-violet:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+.btn-gold{background:linear-gradient(135deg,#f5a623,#e8931a);color:#000;font-weight:700;font-size:14px;padding:13px 24px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 0 24px rgba(245,166,35,0.25)}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 0 40px rgba(245,166,35,0.45)}
+.btn-gold:active{transform:translateY(0)}
+.btn-gold:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+.btn-ghost{background:rgba(255,255,255,0.04);color:#9ca3af;font-weight:500;font-size:14px;padding:13px 24px;border-radius:12px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;transition:all .2s}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);color:#f0eeeb;border-color:rgba(255,255,255,0.12)}
+
+/* Skeleton */
+.skeleton{background:linear-gradient(90deg,rgba(255,255,255,0.03) 25%,rgba(255,255,255,0.07) 50%,rgba(255,255,255,0.03) 75%);background-size:200% 100%;animation:shimmer 2s linear infinite;border-radius:12px}
+
+/* Grid overlay */
+.grid-overlay{background-image:linear-gradient(rgba(255,255,255,0.016) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.016) 1px,transparent 1px);background-size:40px 40px}
+
+/* Noise */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.4}
+
+/* Recording ring */
+.rec-ring{animation:recPulse 1.5s ease-in-out infinite}
+@keyframes recPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+
+@layer utilities{
+  .delay-100{animation-delay:100ms}.delay-150{animation-delay:150ms}
+  .delay-200{animation-delay:200ms}.delay-300{animation-delay:300ms}
+  .delay-400{animation-delay:400ms}.delay-500{animation-delay:500ms}
+  .text-balance{text-wrap:balance}
+}
