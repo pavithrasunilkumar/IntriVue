@@ -1,51 +1,92 @@
-# IntriVue v2 — AI Interview Intelligence Platform
+# IntriVue — AI Interview Intelligence Platform
 
-> Full-stack AI mock interview platform: resume analysis · skill gap detection · semantic scoring · webcam recording · PDF report
-
----
-
-## Quick Start (3 terminals)
-
-```bash
-# Terminal 1 — Backend :5000
-cd backend && cp .env.example .env   # add MONGODB_URI + JWT_SECRET
-npm install && npm run dev
-
-# Terminal 2 — AI Service :8000
-cd ai-service && python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt && python main.py
-
-# Terminal 3 — Frontend :3000
-cd frontend && cp .env.example .env
-npm install && npm run dev
-```
-
-Open **http://localhost:3000**
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Version](https://img.shields.io/badge/Version-v2.0-blue)
+![Frontend](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-blue)
+![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
+![AI](https://img.shields.io/badge/AI-FastAPI%20%2B%20NLP-orange)
+![Database](https://img.shields.io/badge/Database-MongoDB%20Atlas-brightgreen)
+![License](https://img.shields.io/badge/License-Non--Commercial-red)
 
 ---
 
-## Stack
+## 🧠 Description
 
-| Layer      | Tech                                               |
-|------------|----------------------------------------------------|
-| Frontend   | React 18, Vite, Tailwind CSS, Framer Motion, Recharts |
-| Backend    | Node.js, Express, MongoDB Atlas, JWT, Multer       |
-| AI Service | Python, FastAPI, Sentence Transformers, pdfplumber, ReportLab |
+**IntriVue ** is a full-stack AI-powered mock interview platform that simulates real interviews using NLP and ML.
+It generates personalized questions, evaluates responses, and provides detailed performance insights.
 
-## Features
-- Split-layout dark Login & Signup (branding left, form right)
-- Phone + resume PDF at signup
-- 6 domains: CS, Finance, Data Science, Business, Arts, Marketing
-- 7 personalised questions (resume + JD + skill gap + behavioral)
-- 60s per question, live webcam + audio recording, voice input
-- 5-score semantic evaluation: Accuracy, Technical, Communication, Confidence, Overall
-- Results dashboard: animated rings, radar chart, bar chart, strengths/weaknesses
-- Fixed PDF report download (direct fetch from AI service)
+---
 
-## Zip the project
+## 📸 Screenshots
+
+### 🔐 Login Page
+
+![Login](./screenshots/login.png)
+
+### 📝 Signup Page
+
+![Signup](./screenshots/signup.png)
+
+### 🎤 Interview Interface
+
+![Interview](./screenshots/interview.png)
+
+### 📊 Results Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### 📑 PDF Report
+
+![Report](./screenshots/report.png)
+
+---
+
+## ⚡ Features
+
+* Resume-based question generation
+* Skill gap detection
+* Voice + webcam recording
+* Semantic answer evaluation
+* Performance dashboard
+* PDF report generation
+
+---
+
+## ⚡ Quick Start
+
 ```bash
-cd ..
-zip -r intrivue.zip intrivue/ \
-  --exclude "*/node_modules/*" --exclude "*/__pycache__/*" \
-  --exclude "*/venv/*" --exclude "*/.git/*"
+# Backend
+cd backend
+npm install
+npm run dev
+
+# AI Service
+cd ai-service
+venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
+
+# Frontend
+cd frontend
+npm install
+npm run dev
 ```
+
+Open http://localhost:3000
+
+---
+
+## 🏗️ Tech Stack
+
+Frontend: React, Vite, Tailwind
+Backend: Node.js, Express, MongoDB
+AI: FastAPI, Sentence Transformers
+
+---
+
+## ⚠️ License
+
+This project is for **educational and personal use only**.
+Commercial usage is strictly prohibited.
+
+---
