@@ -23,21 +23,17 @@ It generates personalized questions, evaluates responses, and provides detailed 
 
 ![Login](./screenshots/login.png)
 
-### 📝 Signup Page
-
-![Signup](./screenshots/signup.png)
-
 ### 🎤 Interview Interface
 
-![Interview](./screenshots/interview.png)
+![Interview](./screenshots/liveinterview.png)
 
 ### 📊 Results Dashboard
 
 ![Dashboard](./screenshots/dashboard.png)
 
-### 📑 PDF Report
+### 📑 resume and jd selection
 
-![Report](./screenshots/report.png)
+![Report](./screenshots/resume.png)
 
 ---
 
