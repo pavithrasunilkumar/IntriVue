@@ -15,7 +15,12 @@ app.use('/api/interview', require('./routes/interview'));
 app.use('/api/results',   require('./routes/results'));
 app.get('/api/health', (_, res) => res.json({ status: 'ok', service: 'IntriVue v2' }));
 
-mongoose.connect(process.env.MONGODB_URI)
+const mongoUri = process.env.MONGO_URI;
+if (!mongoUri) {
+  console.error("❌ MONGO_URI missing");
+  process.exit(1);
+}
+mongoose.connect(mongoUri)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB:', err));
 
