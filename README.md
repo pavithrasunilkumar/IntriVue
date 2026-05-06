@@ -1,4 +1,4 @@
-# IntriVue — AI Interview Intelligence Platform
+# IntriVue —  AI Interview Intelligence Platform
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Version](https://img.shields.io/badge/Version-v2.0-blue)
