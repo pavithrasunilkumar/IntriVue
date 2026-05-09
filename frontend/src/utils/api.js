@@ -1,13 +1,26 @@
-import axios from 'axios'
-
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
-  timeout: 60000,
-})
-
-const t = localStorage.getItem('intrivue_token')
-if (t) api.defaults.headers.common['Authorization'] = `Bearer ${t}`
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 
 export const AI_URL = import.meta.env.VITE_AI_URL || 'http://localhost:8000'
 
-export default api
+export const apiFetch = async (endpoint, options = {}) => {
+  const token = localStorage.getItem('intrivue_token')
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(token && { Authorization: `Bearer ${token}` }),
+    ...(options.headers || {})
+  }
+
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    headers
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Request failed')
+  }
+
+  return data
+}
