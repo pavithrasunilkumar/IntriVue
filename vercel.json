@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && chmod +x node_modules/.bin/vite && npm run build",
-  "outputDirectory": "frontend/dist"
+  "buildCommand": "chmod +x node_modules/.bin/vite && npm run build",
+  "outputDirectory": "dist"
 }
