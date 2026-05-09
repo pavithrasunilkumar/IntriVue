@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
-import api from '../utils/api'
+import { apiFetch } from '../utils/api'
 import Navbar from '../components/Navbar'
 import { Plus, TrendingUp, Award, Clock, ChevronRight, BarChart3, User, Phone, Mail, FileText } from 'lucide-react'
 
@@ -28,7 +28,7 @@ export default function Dashboard() {
   const [load, setLoad] = useState(true)
 
   useEffect(() => {
-    api.get('/interview/history').then(r => setHist(r.data)).catch(console.error).finally(() => setLoad(false))
+    apiFetch('/interview/history').then(r => setHist(r.data)).catch(console.error).finally(() => setLoad(false))
   }, [])
 
   const done = hist.filter(i => i.status === 'completed')

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import api from '../utils/api'
+import { apiFetch } from '../utils/api'
 import Navbar from '../components/Navbar'
 import { Upload, FileText, Briefcase, ArrowRight, CheckCircle2, X, Sparkles, AlertCircle } from 'lucide-react'
 

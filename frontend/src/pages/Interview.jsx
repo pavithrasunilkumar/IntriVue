@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import api from '../utils/api'
+import { apiFetch } from '../utils/api'
 import Navbar from '../components/Navbar'
 import { Video, VideoOff, Mic, MicOff, Play, Square, ChevronRight, CheckCircle, Clock, AlertTriangle } from 'lucide-react'
 
@@ -83,7 +83,7 @@ export default function Interview() {
 
   /* Load data if missing */
   useEffect(() => {
-    if (!data) api.get(`/interview/${id}`).then(r => setData(r.data)).catch(console.error)
+    if (!data) apiFetch(`/interview/${id}`).then(r => setData(r.data)).catch(console.error)
   }, [id])
 
   /* ── Timer ───────────────────────────────────────── */

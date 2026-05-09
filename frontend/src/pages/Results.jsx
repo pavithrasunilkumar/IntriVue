@@ -76,7 +76,7 @@ export default function Results() {
   const [dlError,   setDlErr] = useState('')
 
   useEffect(() => {
-    api.get(`/results/${id}`)
+    apiFetch(`/results/${id}`)
       .then(r => setData(r.data))
       .catch(console.error)
       .finally(() => setLoad(false))
