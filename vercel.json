@@ -1,5 +1,3 @@
 {
-  "version": 2,
-  "buildCommand": "chmod +x node_modules/.bin/vite && npm run build",
-  "outputDirectory": "dist"
+  "version": 2
 }
