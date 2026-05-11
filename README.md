@@ -1,5 +1,8 @@
 # IntriVue —  AI Interview Intelligence Platform 
 
+## 🌐 Live Deployment
+[🚀 Visit InHire](https://in-hire.vercel.app/login)
+
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Version](https://img.shields.io/badge/Version-v2.0-blue)
 ![Frontend](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-blue)
