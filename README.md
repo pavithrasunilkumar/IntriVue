@@ -159,7 +159,7 @@ IntriVue/
 
 # 👩‍💻 Author
 
-## Pavithra S
+## Pavithra Sunilkumar
 
 - LinkedIn: https://linkedin.com/in/pavithra-sunilkumar68
 - GitHub: https://github.com/pavithrasunilkumar
