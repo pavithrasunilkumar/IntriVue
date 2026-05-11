@@ -129,8 +129,8 @@ IntriVue/
 │   ├── recommendation_engine/
 │   └── interview_system/
 │
-├── datasets/
-├── screenshots/
+├── ai-service/
+|
 └── README.md
 ```
 
