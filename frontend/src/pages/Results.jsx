@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import api, { AI_URL } from '../utils/api'
+import { apiFetch, AI_URL } from '../utils/api'
 import Navbar from '../components/Navbar'
 import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer,
