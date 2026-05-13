@@ -28,7 +28,7 @@ export default function Dashboard() {
   const [load, setLoad] = useState(true)
 
   useEffect(() => {
-    apiFetch('/interview/history').then(r => setHist(r.data)).catch(console.error).finally(() => setLoad(false))
+   apiFetch('/interview/history').then(r => setHist(r.data ?? [])).catch(console.error).finally(() => setLoad(false))
   }, [])
 
   const done = hist.filter(i => i.status === 'completed')
