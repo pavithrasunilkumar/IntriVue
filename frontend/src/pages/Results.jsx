@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { apiFetch, AI_URL } from '../utils/api'
+import { apiFetch, AI_URL } from '../utils/api'   // ✅ FIX 1: was `import api, { AI_URL }`
 import Navbar from '../components/Navbar'
 import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer,
@@ -271,9 +271,10 @@ export default function Results() {
             <h3 className="flex items-center gap-2 text-sm font-semibold text-success mb-4">
               <CheckCircle2 size={15}/> Strengths
             </h3>
-            {data.strengths?.length > 0 ? (
+            {/* ✅ FIX 2: was data.strengths.map(...) — crashes if null */}
+            {(data.strengths?.length > 0) ? (
               <ul className="space-y-2.5">
-                {data.strengths.map((s,i) => (
+                {(data.strengths || []).map((s,i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-dim">
                     <Star size={12} className="text-success mt-0.5 flex-shrink-0"/>{s}
                   </li>
@@ -287,9 +288,10 @@ export default function Results() {
             <h3 className="flex items-center gap-2 text-sm font-semibold text-warn mb-4">
               <AlertTriangle size={15}/> Areas to Improve
             </h3>
-            {data.weaknesses?.length > 0 ? (
+            {/* ✅ FIX 3: was data.weaknesses.map(...) — crashes if null */}
+            {(data.weaknesses?.length > 0) ? (
               <ul className="space-y-2.5">
-                {data.weaknesses.map((w,i) => (
+                {(data.weaknesses || []).map((w,i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-dim">
                     <ChevronRight size={12} className="text-warn mt-0.5 flex-shrink-0"/>{w}
                   </li>
@@ -300,7 +302,8 @@ export default function Results() {
         </div>
 
         {/* ── Skill Gaps ─────────────────────────── */}
-        {(data.skillGaps?.length > 0) && (
+        {/* ✅ FIX 4: was data.skillGaps.map(...) — crashes if null */}
+        {((data.skillGaps || []).length > 0) && (
           <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{delay:0.4}}
             className="glass rounded-2xl p-6 mb-5 border border-gold/10">
             <h3 className="flex items-center gap-2 text-sm font-semibold text-gold mb-3">
@@ -308,7 +311,7 @@ export default function Results() {
             </h3>
             <p className="text-xs text-sub mb-3">Skills required by the JD not found in your resume:</p>
             <div className="flex flex-wrap gap-2">
-              {data.skillGaps.map(g => (
+              {(data.skillGaps || []).map(g => (
                 <span key={g} className="px-3 py-1 rounded-lg text-xs font-semibold bg-gold/10 text-gold border border-gold/20 capitalize">
                   {g}
                 </span>
