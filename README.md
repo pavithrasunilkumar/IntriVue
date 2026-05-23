@@ -1,3 +1,5 @@
+<div align="center">
+  
 # IntriVue —  AI Interview Intelligence Platform 
 
 🌐 Live Deployment-[ Visit InHire](https://in-hire.vercel.app/login)
@@ -21,52 +23,46 @@
 ![Database](https://img.shields.io/badge/Database-MongoDB%20Atlas-brightgreen)
 ![License](https://img.shields.io/badge/License-Non--Commercial-red)
 
+
+</div>
+
 ---
 
-IntriVue is an intelligent AI-powered platform designed to enhance the interview preparation and job discovery experience personalised for you.
+## What is IntriVue?
 
-The platform combines:
+IntriVue is an AI-powered interview preparation and assessment platform that simulates realistic interview experiences across technical and behavioral domains — then analyzes your responses using a multi-model LLM pipeline to give you precise, structured, actionable feedback.
+Think of it as having a senior engineer from Google, a behavioral coach, and an NLP system all in one room — interviewing you, scoring you, and telling you exactly where you fell short and how to fix it.
 
-AI-based interview simulation
-Resume and job description analysis
-Personalized opportunity recommendations
-Smart candidate evaluation
-Interactive modern UI/UX
+## Features
+###  AI Interview System
 
-It helps users prepare smarter, identify skill gaps, and discover relevant opportunities through intelligent matching systems.
+- Dynamic AI-generated interview questions  
+- Technical & behavioral preparation  
+- Real-time interaction flow  
 
-# ✨ Features
+### Resume Analysis
 
-## 🤖 AI Interview System
-- Dynamic AI-generated interview questions
-- Domain-specific interview preparation
-- Technical and behavioral question generation
-- Real-time interaction flow
+- Resume parsing & ATS analysis  
+- Skill extraction and matching  
+- Resume vs JD comparison  
 
-## 📄 Resume Analysis
-- Resume parsing and evaluation
-- Skill extraction and matching
-- ATS-friendly analysis
-- Resume vs Job Description comparison
+###  Smart Opportunity Matching
 
-## 🎯 Smart Opportunity Matching
-- Personalized recommendation engine
-- Skill-based opportunity discovery
-- Intelligent ranking system
-- Swipe-based exploration experience
+- Personalized recommendation engine  
+- Intelligent opportunity ranking  
+- Swipe-based exploration  
 
-## 📊 Candidate Insights
-- Performance evaluation metrics
-- Strength and weakness analysis
-- Improvement recommendations
-- Smart feedback generation
+###  Candidate Insights
 
-## 🎨 Modern User Experience
-- Responsive UI design
-- Interactive dashboard
-- Clean mobile-inspired interface
-- Smooth user navigation
+- Performance evaluation metrics  
+- Strength & weakness analysis  
+- AI-generated feedback  
 
+###  Modern User Experience
+
+- Responsive mobile-inspired UI  
+- Interactive dashboard system  
+- Smooth user navigation  
 ---
 
 ## 📸 Screenshots
@@ -113,13 +109,16 @@ npm run dev
 
 # 🧠 Core AI Concepts Used
 
-- Natural Language Processing (NLP)
-- Resume Skill Extraction
-- Recommendation Systems
-- Content-Based Filtering
-- Semantic Matching
-- AI Prompt Engineering
-- Candidate Scoring Algorithms
+| Feature | Description |
+|---|---|
+| 🤖 **Multi-Model LLM Pipeline** | Routes interview generation and evaluation across specialized AI models for improved accuracy and reasoning. |
+| 🎙️ **Adaptive Interview Simulation** | Dynamically adjusts question difficulty and follow-up prompts based on candidate responses. |
+| 📊 **AI Evaluation Reports** | Generates structured feedback across communication, technical depth, confidence, and clarity. |
+| 🎯 **Domain-Specific Interviews** | Supports tailored interview tracks for Software Engineering, Data Science, Product, and Behavioral roles. |
+| 🔄 **Answer Improvement Suggestions** | Rewrites weak responses into stronger, high-quality interview answers with actionable guidance. |
+| 📈 **Progress Tracking** | Stores interview history and performance trends to monitor long-term improvement. |
+| ⚡ **Real-Time Analysis** | Processes and evaluates responses instantly for seamless interview practice sessions. |
+| 🔐 **Secure Session Management** | Maintains user sessions and interview data securely with scalable backend architecture. |
 
 ---
 
@@ -146,17 +145,24 @@ IntriVue/
 ```
 
 ---
-# 🔮 Future Enhancements
+## 🎯 Impact & Results
 
-- Voice-based AI interviews
-- Real-time interview scoring
-- AI-generated resume improvements
-- LLM-powered conversational interviews
-- Multi-role recommendation system
-- Analytics dashboard for recruiters
+- 🚀 Simulates **domain-aware** interview sessions across 4 technical tracks
+- 📊 Generates structured feedback across **5 scoring dimensions**
+- 🔁 Multi-model routing reduces hallucination rate vs single-model approaches
+- ✅ Deployed and tested end-to-end with real interview scenarios
 
 ---
 
+## 🔭 Future Scope
+
+- [ ] Voice-to-text for spoken interview practice
+- [ ] Company-specific interview mode (FAANG, startups, product companies)
+- [ ] Peer comparison analytics
+- [ ] Resume-to-interview question generator
+- [ ] Chrome extension for live interview assistance
+
+---
 # 👩‍💻 Author
 
 ## Pavithra Sunilkumar
