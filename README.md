@@ -163,9 +163,9 @@ IntriVue/
 - [ ] Chrome extension for live interview assistance
 
 ---
-# 👩‍💻 Author
+##👩‍💻 Author
 
-## Pavithra Sunilkumar
+### Pavithra Sunilkumar
 
 - LinkedIn: https://linkedin.com/in/pavithra-sunilkumar68
 - GitHub: https://github.com/pavithrasunilkumar
@@ -173,13 +173,13 @@ IntriVue/
 
 ---
 
-# ⭐ Support
+## Support
 
 If you found this project useful, consider giving it a ⭐ on GitHub.
 
 ---
 
-## ⚠️ License
+## License
 
 This project is for **educational and personal use only**.
 Commercial usage is strictly prohibited.
