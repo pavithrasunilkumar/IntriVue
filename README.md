@@ -163,7 +163,7 @@ IntriVue/
 - [ ] Chrome extension for live interview assistance
 
 ---
-##👩‍💻 Author
+##  Author
 
 ### Pavithra Sunilkumar
 
