@@ -67,19 +67,19 @@ Think of it as having a senior engineer from Google, a behavioral coach, and an 
 
 ## 📸 Screenshots
 
-### 🔐 Login Page
+### Login Page
 
 ![Login](./screenshots/login.png)
 
-### 🎤 Interview Interface
+### Interview Interface
 
 ![Interview](./screenshots/liveinterview.png)
 
-### 📊 Results Dashboard
+### Results Dashboard
 
 ![Dashboard](./screenshots/dashboard.png)
 
-### 📑 resume and jd selection
+###  resume and jd selection
 
 ![Report](./screenshots/resume.png)
 
@@ -87,7 +87,7 @@ Think of it as having a senior engineer from Google, a behavioral coach, and an 
 
 
 
-## ⚡ Quick Start
+##  Quick Start
 
 ```bash
 # Backend
@@ -107,22 +107,22 @@ npm install
 npm run dev
 ```
 
-# 🧠 Core AI Concepts Used
+## Core AI Concepts Used
 
 | Feature | Description |
 |---|---|
-| 🤖 **Multi-Model LLM Pipeline** | Routes interview generation and evaluation across specialized AI models for improved accuracy and reasoning. |
-| 🎙️ **Adaptive Interview Simulation** | Dynamically adjusts question difficulty and follow-up prompts based on candidate responses. |
-| 📊 **AI Evaluation Reports** | Generates structured feedback across communication, technical depth, confidence, and clarity. |
-| 🎯 **Domain-Specific Interviews** | Supports tailored interview tracks for Software Engineering, Data Science, Product, and Behavioral roles. |
-| 🔄 **Answer Improvement Suggestions** | Rewrites weak responses into stronger, high-quality interview answers with actionable guidance. |
-| 📈 **Progress Tracking** | Stores interview history and performance trends to monitor long-term improvement. |
-| ⚡ **Real-Time Analysis** | Processes and evaluates responses instantly for seamless interview practice sessions. |
-| 🔐 **Secure Session Management** | Maintains user sessions and interview data securely with scalable backend architecture. |
+|  **Multi-Model LLM Pipeline** | Routes interview generation and evaluation across specialized AI models for improved accuracy and reasoning. |
+| **Adaptive Interview Simulation** | Dynamically adjusts question difficulty and follow-up prompts based on candidate responses. |
+| **AI Evaluation Reports** | Generates structured feedback across communication, technical depth, confidence, and clarity. |
+| **Domain-Specific Interviews** | Supports tailored interview tracks for Software Engineering, Data Science, Product, and Behavioral roles. |
+| **Answer Improvement Suggestions** | Rewrites weak responses into stronger, high-quality interview answers with actionable guidance. |
+| **Progress Tracking** | Stores interview history and performance trends to monitor long-term improvement. |
+| **Real-Time Analysis** | Processes and evaluates responses instantly for seamless interview practice sessions. |
+| **Secure Session Management** | Maintains user sessions and interview data securely with scalable backend architecture. |
 
 ---
 
-# 📂 Project Structure
+## Project Structure
 
 ```bash
 IntriVue/
@@ -145,16 +145,16 @@ IntriVue/
 ```
 
 ---
-## 🎯 Impact & Results
+##  Impact & Results
 
-- 🚀 Simulates **domain-aware** interview sessions across 4 technical tracks
-- 📊 Generates structured feedback across **5 scoring dimensions**
-- 🔁 Multi-model routing reduces hallucination rate vs single-model approaches
-- ✅ Deployed and tested end-to-end with real interview scenarios
+-  Simulates **domain-aware** interview sessions across 4 technical tracks
+-  Generates structured feedback across **5 scoring dimensions**
+-  Multi-model routing reduces hallucination rate vs single-model approaches
+-  Deployed and tested end-to-end with real interview scenarios
 
 ---
 
-## 🔭 Future Scope
+##  Future Scope
 
 - [ ] Voice-to-text for spoken interview practice
 - [ ] Company-specific interview mode (FAANG, startups, product companies)
