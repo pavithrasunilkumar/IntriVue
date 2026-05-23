@@ -30,7 +30,7 @@
 
 ## What is IntriVue?
 
-IntriVue is an AI-powered interview preparation and assessment platform that simulates realistic interview experiences across technical and behavioral domains — then analyzes your responses using a multi-model LLM pipeline to give you precise, structured, actionable feedback.
+IntriVue is an AI-powered interview preparation and assessment platform that simulates realistic interview experiences across technical and behavioral domains , then analyzes your responses using a multi-model LLM pipeline to give you precise, structured, actionable feedback.
 Think of it as having a senior engineer from Google, a behavioral coach, and an NLP system all in one room — interviewing you, scoring you, and telling you exactly where you fell short and how to fix it.
 
 ## Features
