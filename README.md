@@ -3,7 +3,6 @@
 🌐 Live Deployment - [Visit IntriVue](https://in-hire.vercel.app/login)
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
-![Version](https://img.shields.io/badge/Version-v3.0-blue)
 ![Frontend](https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react)
 ![Backend](https://img.shields.io/badge/Backend-Node.js-3C873A?style=for-the-badge&logo=node.js)
 ![AI Service](https://img.shields.io/badge/AI%20Service-FastAPI-009688?style=for-the-badge&logo=fastapi)
