@@ -1,6 +1,6 @@
 # IntriVue — AI-Powered Adaptive Interview Intelligence Platform
 
-🌐 Live Deployment - [Visit IntriVue](https://in-hire.vercel.app/login)
+🌐 Live Deployment - [Visit IntriVue](https://intri-vue.vercel.app/login)
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Frontend](https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react)
