@@ -3,16 +3,19 @@
 🌐 Live Deployment - [Visit IntriVue](https://intri-vue.vercel.app/login)
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
+![Version](https://img.shields.io/badge/Version-v3.0-blue)
 ![Frontend](https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react)
 ![Backend](https://img.shields.io/badge/Backend-Node.js-3C873A?style=for-the-badge&logo=node.js)
 ![AI Service](https://img.shields.io/badge/AI%20Service-FastAPI-009688?style=for-the-badge&logo=fastapi)
 ![Python](https://img.shields.io/badge/Backend-Python-3776AB?style=for-the-badge&logo=python)
 ![LLM](https://img.shields.io/badge/LLM-Groq-orange)
 ![RAG](https://img.shields.io/badge/AI-RAG%20%2B%20Reranking-purple)
+![Multi-Agent](https://img.shields.io/badge/AI-Multi--Agent%20System-yellow)
 ![Voice AI](https://img.shields.io/badge/AI-Live%20Voice%20Interview-red)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![DynamoDB](https://img.shields.io/badge/Database-DynamoDB-4053D6)
-![AWS S3](https://img.shields.io/badge/Storage-AWS%20S3-orange)
+![VectorDB](https://img.shields.io/badge/Database-Vector%20DB-8A2BE2)
+![GridFS](https://img.shields.io/badge/Storage-MongoDB%20GridFS-47A248)
 ![Vercel](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)
 ![License](https://img.shields.io/badge/License-Non--Commercial-red)
 
@@ -90,16 +93,27 @@ This loop — not "it uses an LLM," not "it uses RAG" — is what makes IntriVue
 - Resume-vs-JD match scoring, skill by skill
 
 ### 🔍 RAG-Grounded Question Generation
-- Multi-stage retrieval: embed → vector search (top 10) → cross-encoder rerank (top 3–5) → context builder → LLM
+- Multi-stage retrieval: embed → **vector database search** (top 10) → cross-encoder rerank (top 3–5) → context builder → LLM
 - Every question is grounded in *actual evidence* from your resume and the JD — the model is explicitly instructed never to invent candidate experience
 - LLM Gateway abstraction so the underlying provider (Groq today) can be swapped without touching the interview engine
 
+### 🤖 Multi-Agent Interview System
+- Instead of one large prompt doing everything, dedicated agents each own a single job:
+  - **Resume Agent** — parses resume/JD into a structured profile (runs once)
+  - **Question Agent** — generates the next grounded question
+  - **Evaluation Agent** — scores each answer across 5 dimensions, blind to how the question was generated (avoids self-serving bias)
+  - **Follow-up Agent** — generates a clarifying question when an answer is weak or incomplete
+  - **Skill-Gap Agent** — updates the persistent skill profile at session end
+  - **Feedback Agent** — compiles the final report
+- A central **Orchestrator** (a deterministic state machine, not another LLM call) decides which agent runs next and when the interview ends
+- Every agent communicates via structured, validated JSON — never raw prose — for reliability and easy debugging
+
 ### 🎯 Adaptive Interview Engine
 - Difficulty adjusts dynamically based on answer quality (e.g. 3 → 4 → 5 on strong answers, back down on weak ones)
-- Follow-up engine detects incomplete or shallow answers and asks a clarifying question instead of moving on — just like a real interviewer would
+- Follow-up engine detects incomplete or shallow answers and asks a clarifying question instead of moving on
 - Session memory: every question, answer, and evaluation in the *current* interview is fed back into future question generation, so later questions can reference earlier answers directly
 
-### 🎙️ Live Voice Interview Mode *(new)*
+### 🎙️ Live Voice Interview Mode
 - Real, spoken back-and-forth interview instead of typing — candidate talks, IntriVue listens, responds, and asks the next question out loud
 - Streaming speech-to-text converts your spoken answer into text as you talk
 - The AI's next question is generated using both the RAG context (resume/JD) **and** the full conversation so far — so it can call back to something you said three questions ago
@@ -144,8 +158,6 @@ Instead of "Good answer," IntriVue gives:
 
 ---
 
-## 📸 Screenshots
-
 ### Login Page
 
 ![Login](./screenshots/login.png)
@@ -161,9 +173,6 @@ Instead of "Good answer," IntriVue gives:
 ###  resume and jd selection
 
 ![Report](./screenshots/resume.png)
-
----
-
 
 ## Architecture
 
@@ -190,7 +199,7 @@ Instead of "Good answer," IntriVue gives:
         ┌───────▼───────┐    ┌──────▼─────────┐
         │ Authentication│    │ Application DB │
         │ DynamoDB      │    │ MongoDB        │
-        │ Brevo + JWT   │    │                │
+        │ Brevo + JWT   │    │ (+ GridFS)     │
         └───────────────┘    └────────────────┘
                 │
                 │ AI Requests
@@ -198,7 +207,7 @@ Instead of "Good answer," IntriVue gives:
                          AI SERVICE LAYER
 ┌───────────────────────────────────────────────────────────────────────┐
 │                           FastAPI                                      │
-│ Document Processing │ RAG │ Voice Pipeline │ Evaluation │ Recommend.  │
+│ Document Processing │ RAG │ Multi-Agent Orchestrator │ Voice Pipeline │
 └───────────────┬───────────────────────────────┬───────────────────────┘
                 │                               │
                 ▼                               ▼
@@ -214,39 +223,37 @@ Instead of "Good answer," IntriVue gives:
      Embeddings                                  │
            │                                     │
            ▼                                     ▼
-    Vector Database                     Interview Engine
-                                                  ▲
-                         RAG PIPELINE             │
-              ┌─────────────────────────┐        │
-              │ Query Embedding         │        │
-              │ Vector Search (Top 10)  │────────┘
-              │ Metadata Filtering      │
-              │ Cross-Encoder Rerank    │
-              │ Top 3–5 → Context       │
-              └────────────┬────────────┘
-                           ▼
-                       Groq API
-                           │
-                           ▼
-              ┌────────────┼────────────┐
-              ▼            ▼            ▼
-       Question Gen   Follow-up    Evaluation
-              │            │            │
-              └────────────┼────────────┘
-                           ▼
-                    Skill Analysis
-                           │
-                           ▼
-              Personalized Practice + Analytics
-                           │
-                           ▼
-                        MongoDB
+  ┌──────────────────┐                  Multi-Agent Orchestrator
+  │  VECTOR DATABASE  │◄────────────────────────┐│ (state machine)
+  │  (Chroma/Pinecone)│                         ▼▼
+  │  stores embedded  │           ┌────────────────────────────┐
+  │  resume/JD chunks │           │ Resume │ Question │ Eval   │
+  │  with metadata    │           │ Follow-up │ Skill-Gap      │
+  └─────────┬──────────┘           │ Feedback Agents           │
+            │                     └────────────┬────────────────┘
+            │  RAG PIPELINE                    │
+            ▼                                  ▼
+  ┌─────────────────────────┐          Groq API (via LLM Gateway)
+  │ Query Embedding         │
+  │ Vector Search (Top 10)  │
+  │ Metadata Filtering      │
+  │ Cross-Encoder Rerank    │
+  │ Top 3–5 → Context       │
+  └────────────┬────────────┘
+               ▼
+        Context Builder → feeds into Question/Evaluation Agents above
+                                                  │
+                                                  ▼
+                              Personalized Practice + Progress Analytics
+                                                  │
+                                                  ▼
+                                              MongoDB
 
                          STORAGE LAYER
 ┌───────────────────────────────────────────────────────────────────────┐
-│ MongoDB       DynamoDB          AWS S3          Vector Database        │
-│ App Data      OTP/Auth          Resume PDFs     Embeddings/Chunks     │
-│ Interviews    Temp State        Documents                              │
+│ MongoDB            DynamoDB          MongoDB GridFS    Vector Database │
+│ App Data           OTP/Auth          Resume PDFs        Embeddings     │
+│ Interviews         Temp State        (chunked binary)   + Chunks       │
 │ Scores                                                                 │
 └───────────────────────────────────────────────────────────────────────┘
 
@@ -256,7 +263,7 @@ Instead of "Good answer," IntriVue gives:
 └───────────────────────────────────────────────────────────────────────┘
 ```
 
-### The Live Voice Interview Loop (new)
+### The Live Voice Interview Loop
 
 ```
 Candidate speaks
@@ -266,14 +273,14 @@ Streaming Speech-to-Text
 Final transcript → Answer Evaluation + Session Memory Update
       ↓
 Next Question Generation
-   (RAG context: Resume + JD  +  Session Memory: prior Q&A in this interview)
+   (RAG context: Vector-DB-retrieved Resume/JD chunks  +  Session Memory: prior Q&A)
       ↓
 Text-to-Speech → question spoken back to candidate
       ↓
 (loop continues, difficulty adapts, follow-ups triggered as needed)
 ```
 
-The key difference from the text-based mode: every new question is grounded not only in the resume/JD retrieval, but in the **running memory of the current session**, so the interviewer can reference something said several turns earlier — the same way a human interviewer would.
+The key difference from the text-based mode: every new question is grounded not only in vector-database retrieval, but in the **running memory of the current session**, so the interviewer can reference something said several turns earlier — the same way a human interviewer would.
 
 ---
 
@@ -289,7 +296,10 @@ Node.js · Express.js · Mongoose · JWT · Multer
 Python · FastAPI · Sentence Transformers · Cross-Encoder Reranker · scikit-learn · NumPy
 
 ### RAG Pipeline
-Document parsing → Chunking → Embeddings → Vector Database → Metadata Filtering → Multi-stage Retrieval → Cross-Encoder Reranking → Context Construction
+Document parsing → Chunking → Embeddings → **Vector Database** → Metadata Filtering → Multi-stage Retrieval → Cross-Encoder Reranking → Context Construction
+
+### Multi-Agent System
+Resume Agent · Question Agent · Evaluation Agent · Follow-up Agent · Skill-Gap Agent · Feedback Agent — coordinated by a deterministic Orchestrator state machine, communicating via validated structured JSON
 
 ### LLM
 **Groq API** — used for question generation, follow-ups, answer evaluation, feedback, and skill-gap reasoning, accessed through an internal LLM Gateway for provider flexibility
@@ -302,12 +312,13 @@ Document parsing → Chunking → Embeddings → Vector Database → Metadata Fi
 | Speech feature analysis | librosa / openSMILE (open-source, free) | Pace, filler words, pauses → feeds Communication score |
 | Fallback / offline option | Self-hosted Whisper (open-source) | Free, but batch-only — used only as an STT fallback, not for live streaming |
 
-### Databases
-- **MongoDB** — core application data (users, interviews, scores, evaluations)
-- **DynamoDB** — OTP and temporary auth state (TTL-based expiry)
-
-### Storage
-**AWS S3** — resume and document storage (only metadata + S3 key stored in MongoDB)
+### Databases & Storage
+| Component | Purpose | Why separate from the others |
+|---|---|---|
+| **MongoDB** | Core application data — users, interviews, scores, evaluations | Document-shaped data (nested turns/evaluations) fits naturally |
+| **MongoDB GridFS** | Resume/JD file storage (chunked binary, inside the same MongoDB deployment) | Keeps large binary files out of regular documents without standing up a separate object-storage service |
+| **DynamoDB** | OTP and temporary auth state, with TTL-based expiry | Different access pattern (high write/delete churn, short-lived) — kept out of the primary app database |
+| **Vector Database** (Chroma / Pinecone / Qdrant) | Stores embedded resume/JD chunks for semantic search | Purpose-built for similarity search — this is the specific job neither MongoDB nor GridFS is designed to do; it's what the RAG pipeline queries every time a question needs grounding |
 
 ### Authentication
 Brevo (OTP email) + DynamoDB + JWT (access/refresh tokens, rotation, rate limiting)
@@ -321,7 +332,8 @@ Docker · GitHub Actions (CI/CD) · Vercel
 
 | Concept | Description |
 |---|---|
-| **Multi-Stage RAG** | Retrieval → reranking → context construction, so questions are grounded in real evidence instead of hallucinated |
+| **Multi-Stage RAG** | Vector search → reranking → context construction, so questions are grounded in real evidence instead of hallucinated |
+| **Multi-Agent Architecture** | Specialized agents (question, evaluation, follow-up, skill-gap, feedback) coordinated by a deterministic Orchestrator, rather than one large prompt doing everything |
 | **Adaptive Interview Simulation** | Difficulty and follow-ups adjust dynamically based on candidate responses |
 | **Live Voice Conversation** | Streaming STT/TTS with session memory enables a spoken, context-aware interview |
 | **Multi-Dimension Evaluation** | Technical accuracy, relevance, completeness, communication, and depth scored independently |
@@ -351,8 +363,16 @@ IntriVue/
 ├── ai-service/
 │   ├── document_pipeline/
 │   ├── rag/
+│   │   └── vector_store/        # vector database client + indexing logic
+│   ├── agents/
+│   │   ├── resume_agent.py
+│   │   ├── question_agent.py
+│   │   ├── evaluation_agent.py
+│   │   ├── followup_agent.py
+│   │   ├── skillgap_agent.py
+│   │   └── feedback_agent.py
+│   ├── orchestrator/            # state machine coordinating all agents
 │   ├── voice_pipeline/
-│   ├── evaluation/
 │   └── recommendation_engine/
 │
 └── README.md
@@ -385,6 +405,7 @@ npm run dev
 ## Roadmap / Future Scope
 
 - [x] Resume & JD RAG-grounded questioning
+- [x] Multi-agent orchestration
 - [x] Adaptive difficulty & follow-up engine
 - [ ] Live voice interview mode (in progress)
 - [ ] Coding round with live code execution
@@ -414,4 +435,5 @@ If you found this project useful, consider giving it a ⭐ on GitHub.
 
 ## License
 
-This project is for **educational and personal use only**. Commercial usage is strictly prohibited.
+This project is for **educational and personal use only**. Commercial usage is strictly prohibited.## 📸 Screenshots
+
